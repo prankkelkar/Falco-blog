@@ -1,0 +1,5 @@
+- rule: Detecting spawned shell in a container
+  desc: Shell opened inside a container which is not desireable in production environment.
+  condition: container.id != host and proc.name = bash
+  output: Hack !! A shell was spawned in a container. (user=%user.name command=%proc.cmdline %container.info)
+  priority: INFO
